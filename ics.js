@@ -1,18 +1,8 @@
 class Ics {
-  constructor(title, description, start, end, created, location) {
-    this.title = title;
-    this.description = description;
-    this.start = start;
-    this.end = end;
-    this.created = created;
-    this.location = location;
-    this.modified = new Date();
-  }
-
-  set modified(modified) {
-    if (modified instanceof Date) {
-      this.modified = modified;
-    }
+  constructor(vevents = [], prodID, version, method ) {
+    this.begin = 'BEGIN:VCALEDNAR';
+    this.prodID = 'PRODID:' + (prodID || '-//Google Inc//Google Calendar 70.9054//EN');
+    this.vevents = vevents;
   }
 
   build() {
