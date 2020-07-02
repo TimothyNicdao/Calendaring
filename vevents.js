@@ -1,4 +1,4 @@
-class Ics {
+class Vevents {
   constructor(title, description, start, end, created, location) {
     this.title = title;
     this.description = description;
@@ -17,12 +17,9 @@ class Ics {
 
   build() {
     let output = '';
-
     const objectKeys = Object.keys(this);
-
-    objectkeys.forEach(() => { 
-      output += 'V' 
+    objectKeys.forEach(() => {
+      output += 'V';
     });
   }
 }
-
