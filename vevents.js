@@ -27,6 +27,6 @@ class Vevents {
   }
 }
 
- let e  =  new Vevents('Tim test', 'PUBLIC', 'To test');
+ let e = new Vevents('Tim test', 'PUBLIC', 'To test');
 
  console.log(e.build());
