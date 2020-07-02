@@ -1,3 +1,4 @@
+// Pass in components to build the ICS file
 class Ics {
   constructor(vevents = [], prodID, version, timezone) {
     this.prodID = 'PRODID:' + (prodID || '-//Google Inc//Google Calendar 70.9054//EN');
