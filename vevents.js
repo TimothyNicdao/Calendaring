@@ -1,12 +1,13 @@
 class Vevents {
-  constructor(title, description, start, end, created, location) {
-    this.title = title;
+  constructor(summary, classification, description, start, end, location, created) {
+    this.summary = 'SUMMARY:' + summary;
+    this.classification = 'CLASS:' + (classification || 'PUBLIC');
     this.description = description;
-    this.start = start;
-    this.end = end;
-    this.created = created;
+    this.start = 'DTSTART:' + start;
+    this.end = 'DTEND:' + end;
     this.location = location;
     this.modified = new Date();
+    this.created = created;
   }
 
   set modified(modified) {

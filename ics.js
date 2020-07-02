@@ -1,18 +1,18 @@
 class Ics {
-  constructor(vevents = [], prodID, version, method ) {
-    this.begin = 'BEGIN:VCALEDNAR';
+  constructor(vevents = [], prodID, version, timezone) {
     this.prodID = 'PRODID:' + (prodID || '-//Google Inc//Google Calendar 70.9054//EN');
+    this.version = 'VERSION:' + (version || '2.0');
+    this.timezone = 'TZID:' + (timezone || 'Pacific/Honolulu');
     this.vevents = vevents;
   }
 
   build() {
-    let output = '';
+    const output = `BEGIN:VCALENDAR'
+     ${this.prodID}
+     ${this.version}
+     ${this.events.reduce((accumulator, currentVal) => accumulator + currentVal.build(), '')}
+     END:VCALENDAR`;
 
-    const objectKeys = Object.keys(this);
-
-    objectkeys.forEach(() => { 
-      output += 'V' 
-    });
+    return output;
   }
 }
-
