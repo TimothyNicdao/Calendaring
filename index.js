@@ -1,5 +1,5 @@
-import Ics from './ics';
-import Vevents from './Vevents';
+const Ics = require('./ics');
+const Vevents = require('./vevents');
 
 let ev1 = new Vevents('Test1', 'Private', 'To test');
 let ev2 = new Vevents('Test1', 'Private', 'To test');

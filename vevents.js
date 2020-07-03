@@ -1,4 +1,4 @@
-export default class Vevents {
+module.exports = class Vevents {
   constructor(summary, classification, description, start, end, priority, latitude, longtitude, location) {
     this.summary = 'SUMMARY:' + summary;
     this.classification = 'CLASS:' + (classification || 'PUBLIC');
@@ -26,7 +26,3 @@ export default class Vevents {
     return output;
   }
 }
-
- let e = new Vevents('Tim test', 'PUBLIC', 'To test');
-
- console.log(e.build());
