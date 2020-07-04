@@ -7,12 +7,12 @@ module.exports = class Vevents {
     this.start = 'DTSTART:' + start;
     this.end = 'DTEND:' + end;
     this.proirity = 'PRIORITY:' + priority;
-    this.modified = new Date();
     this.geo = 'GEO:' + latitude + ';' + longtitude;
-    this.end = 'END:Vevent';
+    this.ending = 'END:Vevent';
+    // this.modified = new Date();
     // this.location = location;
     // this.created = created; -- not sure if we need this
-  }6
+  }
 
   // set modified(modified) {
   //   if (modified instanceof Date) {

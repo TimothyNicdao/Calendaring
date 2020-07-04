@@ -8,13 +8,9 @@ module.exports = class Ics {
   }
 
   build() {
-    const output = `
-    ${'BEGIN:VCALENDAR'}
-    ${this.prodID}
-    ${this.version}
-    ${this.vevents.reduce((accumulator, currentVal) => accumulator + currentVal.build() + '/n', '')}
-    END:VCALENDAR`;
+    const output = `${'BEGIN:VCALENDAR'}${'\n'}${this.prodID}${'\n'}${this.version}${'\n'}`
+    + `${this.vevents.reduce((accumulator, currentVal) => accumulator + currentVal.build() + '\n', '')}`;
 
-    return ;
+    return output.trim() + '\nEND:VCALENDAR';
   }
 };
