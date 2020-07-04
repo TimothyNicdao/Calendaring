@@ -1,16 +1,16 @@
 module.exports = class Vevents {
-  constructor(summary, classification, description, start, end, priority, latitude, longtitude, location) {
-    this.begin = 'Begin:Vevent';
-    this.summary = 'SUMMARY:' + summary;
+  constructor(classification, latitude, longtitude, location, priority, summary, start, end) {
+    this.begin = 'Begin:VEVENT';
     this.classification = 'CLASS:' + (classification || 'PUBLIC');
-    this.description = 'DESCRIPTION:' +  description;
-    this.start = 'DTSTART:' + start;
-    this.end = 'DTEND:' + end;
-    this.proirity = 'PRIORITY:' + priority;
     this.geo = 'GEO:' + latitude + ';' + longtitude;
-    this.ending = 'END:Vevent';
+    this.summary = 'SUMMARY:' + summary;
+    this.start = 'DTSTART;VALUE=DATE:' + start;
+    this.end = 'DTEND;VALUE=DATE:' + end;
+    this.priority = 'PRIORITY:' + priority;
+    this.location = 'LOCATION:' + location;
+    this.ending = 'END:VEVENT';
+    // this.description = 'DESCRIPTION:' +  description;
     // this.modified = new Date();
-    // this.location = location;
     // this.created = created; -- not sure if we need this
   }
 
