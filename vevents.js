@@ -1,5 +1,6 @@
 module.exports = class Vevents {
   constructor(summary, classification, description, start, end, priority, latitude, longtitude, location) {
+    this.begin = 'Begin:Vevent';
     this.summary = 'SUMMARY:' + summary;
     this.classification = 'CLASS:' + (classification || 'PUBLIC');
     this.description = 'DESCRIPTION:' +  description;
@@ -8,9 +9,10 @@ module.exports = class Vevents {
     this.proirity = 'PRIORITY:' + priority;
     this.modified = new Date();
     this.geo = 'GEO:' + latitude + ';' + longtitude;
+    this.end = 'END:Vevent';
     // this.location = location;
     // this.created = created; -- not sure if we need this
-  }
+  }6
 
   // set modified(modified) {
   //   if (modified instanceof Date) {
