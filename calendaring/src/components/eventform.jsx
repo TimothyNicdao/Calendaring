@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react'
+import { Form, Icon } from 'semantic-ui-react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -40,16 +40,19 @@ class EventForm extends Component {
       longtitude: '' ,
       summary:'',
       start: new Date(),
-      end:'',
+      end:'',  
       priority:'PRIORITY',
       location:'LOCATION',
   }
 
   
   handleChange = (e, {name, value}) => {
-  console.log(e);
- 
-  this.setState({ [name]: value })
+    this.setState({ [name]: value })
+  }
+
+  handleDateChange = (date) => {
+    console.log(date);
+    this.setState({ 'start': date })
   }
 
 
@@ -91,18 +94,38 @@ class EventForm extends Component {
           onChange={this.handleChange}
           name='summary'
         />
-        <Form.Input 
-          label='Start' 
-          placeholder='StartDate' 
-          width={2}
-          value={start}
-          onChange={this.handleChange}
-        />
-        <Form.Input 
-          label='EndDate' 
-          placeholder='End' 
-          width={2}
-        />
+        <Form.Group inline>
+          <Form.Input 
+            readOnly
+            label='Start' 
+            placeholder='StartDate' 
+            width={2}
+            value={start}
+          />
+          <Icon>
+            <DatePicker 
+            selected={this.state.date} 
+            onChange={this.handleDateChange} 
+            name={start}
+          />
+          </Icon>
+        </Form.Group>
+        <Form.Group inline>
+          <Form.Input 
+            label='EndDate' 
+            placeholder='EndDate' 
+            width={2}
+            value={end}
+            onChange={this.handleChange}
+          />
+          <Icon>
+            <DatePicker 
+            selected={this.state.date} 
+            onChange={this.handleChange} 
+            name={start}
+          />
+          </Icon>
+        </Form.Group>
         <Form.Input 
           label='Priority' 
           placeholder='Priority' 
@@ -112,11 +135,6 @@ class EventForm extends Component {
           label='Location' 
           placeholder='Location' 
           width={2}
-        />
-        <DatePicker 
-          selected={this.state.date} 
-          onChange={this.handleChange} 
-          name={start}
         />
         <Form.Button>Submit</Form.Button>
       </Form>
