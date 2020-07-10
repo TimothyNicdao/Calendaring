@@ -136,7 +136,7 @@ class EventForm extends Component {
           placeholder='Location' 
           width={2}
         />
-        <Form.Button>Submit</Form.Button>
+        <Form.Button>Create ICS File</Form.Button>
       </Form>
     );
   }
