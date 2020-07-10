@@ -43,9 +43,9 @@ class EventForm extends Component {
       longtitude: '' ,
       summary:'',
       start: new Date(),
-      end:'',  
-      priority:'PRIORITY',
-      location:'LOCATION',
+      end: new Date(),  
+      priority:'',
+      location:'',
   }
 
   
@@ -53,16 +53,31 @@ class EventForm extends Component {
     this.setState({ [name]: value })
   }
 
-  handleDateChange = (date) => {
-    console.log(date);
+  handleDateStartChange = (date) => {
     this.setState({ 'start': date })
   }
 
+  handleDateEndChange = (date) => {
+    this.setState({ 'end': date })
+  }
+
+  buildDate = (date) => {
+    let year = date.getYear() + 1900;
+    let month = date.getMonth() + 1  > 9 ? date.getMonth() +1  : '0' + (date.getMonth() + 1);
+    let day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+    let buildDate = `${year}${month}${day}`;
+    return buildDate;
+  }
+  
+
   handleSubmit = () => {
-    const {classification, latitude, longtitude, location, priority, summary, start, end} = this.state; 
+    let {classification, latitude, longtitude, location, priority, summary, start, end} = this.state; 
+    start = this.buildDate(start);
+    end = this.buildDate(end);
     let icsEvent = [new Vevents(classification, latitude, longtitude, location, priority, summary, start, end)];
     let icsCalendar = new Ics(icsEvent);
     let calendar = icsCalendar.build();
+    console.log(this.state);
     fileDownload(calendar, 'Calendar.ics');
   }
 
@@ -115,7 +130,7 @@ class EventForm extends Component {
           <Icon>
             <DatePicker 
             selected={this.state.date} 
-            onChange={this.handleDateChange} 
+            onChange={this.handleDateStartChange} 
             name={start}
           />
           </Icon>
@@ -126,13 +141,13 @@ class EventForm extends Component {
             placeholder='EndDate' 
             width={2}
             value={end}
-            onChange={this.handleChange}
+            readOnly
           />
           <Icon>
             <DatePicker 
             selected={this.state.date} 
-            onChange={this.handleChange} 
-            name={start}
+            onChange={this.handleDateEndChange} 
+            name={end}
           />
           </Icon>
         </Form.Group>
@@ -140,15 +155,19 @@ class EventForm extends Component {
           label='Priority' 
           placeholder='Priority: 1-10' 
           width={2}
+          onChange={this.handleChange}
+          name='priority'
         />
         <Form.Input 
           label='Location' 
           placeholder='Location' 
           width={2}
+          onChange={this.handleChange}
+          name='location'
         />
       </Form>
       <button
-      onClick={this.handleSubmit}
+        onClick={this.handleSubmit}
       >
        Click to download file
       </button>
