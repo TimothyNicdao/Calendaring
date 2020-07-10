@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Calendaring/static/css/main.5f361e03.chunk.css",
+    "main.js": "/Calendaring/static/js/main.fa94694e.chunk.js",
+    "main.js.map": "/Calendaring/static/js/main.fa94694e.chunk.js.map",
+    "runtime-main.js": "/Calendaring/static/js/runtime-main.9fad581f.js",
+    "runtime-main.js.map": "/Calendaring/static/js/runtime-main.9fad581f.js.map",
+    "static/css/2.a1b7a17e.chunk.css": "/Calendaring/static/css/2.a1b7a17e.chunk.css",
+    "static/js/2.50ff6f07.chunk.js": "/Calendaring/static/js/2.50ff6f07.chunk.js",
+    "static/js/2.50ff6f07.chunk.js.map": "/Calendaring/static/js/2.50ff6f07.chunk.js.map",
+    "index.html": "/Calendaring/index.html",
+    "precache-manifest.71d26fb99f1d30c38cdd161d3bf8c051.js": "/Calendaring/precache-manifest.71d26fb99f1d30c38cdd161d3bf8c051.js",
+    "service-worker.js": "/Calendaring/service-worker.js",
+    "static/css/2.a1b7a17e.chunk.css.map": "/Calendaring/static/css/2.a1b7a17e.chunk.css.map",
+    "static/css/main.5f361e03.chunk.css.map": "/Calendaring/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.50ff6f07.chunk.js.LICENSE.txt": "/Calendaring/static/js/2.50ff6f07.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/Calendaring/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9fad581f.js",
+    "static/css/2.a1b7a17e.chunk.css",
+    "static/js/2.50ff6f07.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.fa94694e.chunk.js"
+  ]
+}
