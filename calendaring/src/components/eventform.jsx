@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Form, Icon } from 'semantic-ui-react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Vevents from '../vevents';
+import Ics from '../ics';
+import fileDownload from 'js-file-download';
 
 
 const options = [
@@ -55,12 +58,19 @@ class EventForm extends Component {
     this.setState({ 'start': date })
   }
 
-
+  handleSubmit = () => {
+    const {classification, latitude, longtitude, location, priority, summary, start, end} = this.state; 
+    let icsEvent = [new Vevents(classification, latitude, longtitude, location, priority, summary, start, end)];
+    let icsCalendar = new Ics(icsEvent);
+    let calendar = icsCalendar.build();
+    fileDownload(calendar, 'Calendar.ics');
+  }
 
   render() { 
     const{classification, latitude, longtitude, summary, start, end, priority, location} = this.state;
 
     return (  
+      <React.Fragment>
       <Form method="get" action="../App.js">
         <Form.Select
           label='Classification'
@@ -128,7 +138,7 @@ class EventForm extends Component {
         </Form.Group>
         <Form.Input 
           label='Priority' 
-          placeholder='Priority' 
+          placeholder='Priority: 1-10' 
           width={2}
         />
         <Form.Input 
@@ -136,8 +146,13 @@ class EventForm extends Component {
           placeholder='Location' 
           width={2}
         />
-        <Form.Button>Create ICS File</Form.Button>
       </Form>
+      <button
+      onClick={this.handleSubmit}
+      >
+       Click to download file
+      </button>
+    </React.Fragment>
     );
   }
 }
