@@ -1,5 +1,5 @@
 // Pass in components to build the ICS file
-module.exports = class Ics {
+export default class Ics {
   constructor(vevents = [], prodID, version, timezone) {
     this.prodID = `PRODID:${prodID || '-//ICS 414 Turkey Pie//Calendar Project //EN'}`;
     this.version = `VERSION:${version || '2.0'}`;

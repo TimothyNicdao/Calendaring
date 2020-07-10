@@ -1,4 +1,4 @@
-module.exports = class Vevents {
+export default class Vevents {
   constructor(classification, latitude, longtitude, location, priority, summary, start, end) {
     this.begin = 'Begin:VEVENT';
     this.classification = 'CLASS:' + (classification || 'PUBLIC');
