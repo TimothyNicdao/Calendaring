@@ -7,12 +7,6 @@ import Ics from '../ics';
 import fileDownload from 'js-file-download';
 
 
-const options = [
-  { key: 'm', text: 'Malee', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-  { key: 'o', text: 'Other', value: 'other' },
-]
-
 const classificatication = [
   {text: 'Public', value:'PUBLIC'},
   {text: 'Private', value:'PRIVATE'}
@@ -29,7 +23,7 @@ class EventForm extends Component {
   //       latitude: '',
   //       longtitude: '' 
   //     },
-  //     summary:'',
+  //     summary:'', 
   //     start:'',
   //     end:'',
   //     priority:'PRIORITY',
