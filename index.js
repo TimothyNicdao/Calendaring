@@ -10,4 +10,4 @@ const evArray = [ev1, ev2, ev3, ev4];
 
 const IcsCal = new Ics(evArray);
 
-console.log(IcsCal.build());
+console.log(IcsCal.build()) ;

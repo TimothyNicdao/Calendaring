@@ -5,9 +5,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import Vevents from '../vevents';
 import Ics from '../ics';
 import fileDownload from 'js-file-download';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
 
 
 const classificatication = [
+  {text: 'Public', value:'PUBLIC'},
+  {text: 'Private', value:'PRIVATE'}
+]
+
+const classificatication2 = [
   {text: 'Public', value:'PUBLIC'},
   {text: 'Private', value:'PRIVATE'}
 ]
@@ -71,7 +78,7 @@ class EventForm extends Component {
     let icsEvent = [new Vevents(classification, latitude, longtitude, location, priority, summary, start, end)];
     let icsCalendar = new Ics(icsEvent);
     let calendar = icsCalendar.build();
-    console.log(this.state);
+    console.log('Sumbit is called')
     fileDownload(calendar, 'Calendar.ics');
   }
 
@@ -160,11 +167,15 @@ class EventForm extends Component {
           name='location'
         />
       </Form>
-      <button
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        startIcon={<SaveIcon />}
         onClick={this.handleSubmit}
       >
-       Click to download file
-      </button>
+        Download
+      </Button>
     </React.Fragment>
     );
   }
