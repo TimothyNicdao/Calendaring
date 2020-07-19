@@ -78,6 +78,7 @@ class EventForm extends Component {
     let icsEvent = [new Vevents(classification, latitude, longtitude, location, priority, summary, start, end)];
     let icsCalendar = new Ics(icsEvent);
     let calendar = icsCalendar.build();
+    console.log('Sumbit is called')
     fileDownload(calendar, 'Calendar.ics');
   }
 
@@ -171,6 +172,7 @@ class EventForm extends Component {
         color="primary"
         size="large"
         startIcon={<SaveIcon />}
+        onClick={this.handleSubmit}
       >
         Download
       </Button>
