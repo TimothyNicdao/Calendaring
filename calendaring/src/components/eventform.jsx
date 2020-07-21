@@ -47,6 +47,8 @@ class EventForm extends Component {
       end: new Date(),  
       priority:'',
       location:'',
+      errorToggle: false,
+      error: 'None'
   }
 
   
@@ -72,21 +74,52 @@ class EventForm extends Component {
   
 
   handleSubmit = () => {
-    let {classification, latitude, longtitude, location, priority, summary, start, end} = this.state; 
-    start = this.buildDate(start);
-    end = this.buildDate(end);
-    let icsEvent = [new Vevents(classification, latitude, longtitude, location, priority, summary, start, end)];
-    let icsCalendar = new Ics(icsEvent);
-    let calendar = icsCalendar.build();
-    fileDownload(calendar, 'Calendar.ics');
+
+    console.log(this.formComplete());
+    if (formComplete() === true){
+      console.log('12');
+      let {classification, latitude, longtitude, location, priority, summary, start, end} = this.state; 
+      start = this.buildDate(start);
+      end = this.buildDate(end);
+      let icsEvent = [new Vevents(classification, latitude, longtitude, location, priority, summary, start, end)];
+      let icsCalendar = new Ics(icsEvent);
+      let calendar = icsCalendar.build();
+      fileDownload(calendar, 'Calendar.ics');
+    }
+    else{
+      console.log('123');
+      this.setState({errorToggle: true});
+    }
+  }
+
+
+  formComplete = () =>{
+
+    Object.keys(this.state).forEach((key, index) => {
+      if (this.state[key] === ''){
+        this.setState({error: key});
+        return false;
+      }
+    })
+
+    return true;
   }
 
   render() { 
-    const{classification, latitude, longtitude, summary, start, end, priority, location} = this.state;
+    const{classification, latitude, longtitude, summary, start, end, priority, location, errorToggle, error} = this.state;
+    
+    if(errorToggle){
+      console.log('Error Toggle');
+      return (
+      <Alert severity="error">{error} is missing. Please complete the form</Alert>
+      )
+    }
+
+
 
     return (  
       <React.Fragment>
-      <Form method="get" action="../App.js">
+      <Form >
         <Form.Select
           label='Classification'
           options={classificatication}
@@ -171,6 +204,7 @@ class EventForm extends Component {
         color="primary"
         size="large"
         startIcon={<SaveIcon />}
+        onClick={this.handleSubmit}
       >
         Download
       </Button>
