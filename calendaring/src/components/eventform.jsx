@@ -71,17 +71,6 @@ class EventForm extends Component {
   }
   
 
-  handleSubmit = () => {
-    let {classification, latitude, longtitude, location, priority, summary, start, end} = this.state; 
-    start = this.buildDate(start);
-    end = this.buildDate(end);
-    let icsEvent = [new Vevents(classification, latitude, longtitude, location, priority, summary, start, end)];
-    let icsCalendar = new Ics(icsEvent);
-    let calendar = icsCalendar.build();
-    console.log('Sumbit is called')
-    fileDownload(calendar, 'Calendar.ics');
-  }
-
   render() { 
     const{classification, latitude, longtitude, summary, start, end, priority, location} = this.state;
 
