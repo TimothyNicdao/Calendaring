@@ -74,6 +74,7 @@ class EventForm extends Component {
   }
   
 
+<<<<<<< HEAD
   handleSubmit = () => {
 
     if (this.formComplete() === true){
@@ -111,6 +112,8 @@ class EventForm extends Component {
     this.setState({errorToggle: false});
   }
 
+=======
+>>>>>>> 60c8b77f59444a26e5d3bc44031cbdde867506d4
   render() { 
     const{classification, latitude, longtitude, summary, start, end, priority, location, errorToggle, error} = this.state;
     
