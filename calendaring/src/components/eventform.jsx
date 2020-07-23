@@ -7,7 +7,8 @@ import Ics from '../ics';
 import fileDownload from 'js-file-download';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
-
+import Alert from '@material-ui/lab/Alert';
+import FormGroup from '@material-ui/core/FormGroup';
 
 const classificatication = [
   {text: 'Public', value:'PUBLIC'},
@@ -75,8 +76,7 @@ class EventForm extends Component {
 
   handleSubmit = () => {
 
-    console.log(this.formComplete());
-    if (formComplete() === true){
+    if (this.formComplete() === true){
       console.log('12');
       let {classification, latitude, longtitude, location, priority, summary, start, end} = this.state; 
       start = this.buildDate(start);
@@ -96,30 +96,34 @@ class EventForm extends Component {
   formComplete = () =>{
 
     Object.keys(this.state).forEach((key, index) => {
-      if (this.state[key] === ''){
+      if (this.state[key] == ''){
+        console.log(key);
         this.setState({error: key});
         return false;
       }
     })
 
-    return true;
+    return false;
+  }
+
+  formReset = () => {
+    console.log('FormReset');
+    this.setState({errorToggle: false});
   }
 
   render() { 
     const{classification, latitude, longtitude, summary, start, end, priority, location, errorToggle, error} = this.state;
     
-    if(errorToggle){
+    if(errorToggle === true){
       console.log('Error Toggle');
       return (
-      <Alert severity="error">{error} is missing. Please complete the form</Alert>
+      <Alert onClose={this.formReset}>{error} is missing. Please complete the form</Alert>
       )
     }
 
-
-
     return (  
       <React.Fragment>
-      <Form >
+      <FormGroup >
         <Form.Select
           label='Classification'
           options={classificatication}
@@ -129,6 +133,10 @@ class EventForm extends Component {
           name='classification'
           onChange={this.handleChange}
         />
+        <TextField 
+          id="standard-basic" 
+          label='Latitude'  
+          />
         <Form.Input 
           inline 
           label='Latitude' 
@@ -198,7 +206,7 @@ class EventForm extends Component {
           onChange={this.handleChange}
           name='location'
         />
-      </Form>
+      </FormGroup>
       <Button
         variant="contained"
         color="primary"
