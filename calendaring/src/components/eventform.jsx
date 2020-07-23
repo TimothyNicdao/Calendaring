@@ -8,7 +8,9 @@ import fileDownload from 'js-file-download';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import Alert from '@material-ui/lab/Alert';
-import FormGroup from '@material-ui/core/FormGroup';
+import Classification from './classification.jsx'
+import TextField from '@material-ui/core/TextField';
+import Container from '@material-ui/core/Container';
 
 const classificatication = [
   {text: 'Public', value:'PUBLIC'},
@@ -74,7 +76,6 @@ class EventForm extends Component {
   }
   
 
-<<<<<<< HEAD
   handleSubmit = () => {
 
     if (this.formComplete() === true){
@@ -112,8 +113,6 @@ class EventForm extends Component {
     this.setState({errorToggle: false});
   }
 
-=======
->>>>>>> 60c8b77f59444a26e5d3bc44031cbdde867506d4
   render() { 
     const{classification, latitude, longtitude, summary, start, end, priority, location, errorToggle, error} = this.state;
     
@@ -126,14 +125,11 @@ class EventForm extends Component {
 
     return (  
       <React.Fragment>
-      <FormGroup >
-        <Form.Select
-          label='Classification'
+      <Container maxWidth="lg">
+        <Classification
+          label='classification'
           options={classificatication}
-          placeholder='Classification'
           value={classification}
-          width={2}
-          name='classification'
           onChange={this.handleChange}
         />
         <TextField 
@@ -209,7 +205,7 @@ class EventForm extends Component {
           onChange={this.handleChange}
           name='location'
         />
-      </FormGroup>
+      </Container>
       <Button
         variant="contained"
         color="primary"
