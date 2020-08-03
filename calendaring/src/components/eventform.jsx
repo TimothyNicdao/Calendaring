@@ -56,6 +56,10 @@ class EventForm extends Component {
 
   
   handleChange = (e, {name, value}) => {
+    console.log('Called');
+    console.log(e.target);
+    console.log(e.target);
+    console.log(value);
     this.setState({ [name]: value })
   }
 
@@ -125,7 +129,7 @@ class EventForm extends Component {
 
     return (  
       <React.Fragment>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Classification
           label='classification'
           options={classificatication}
@@ -205,8 +209,8 @@ class EventForm extends Component {
           onChange={this.handleChange}
           name='location'
         />
-      </Container>
       <Button
+        className = 'Center'
         variant="contained"
         color="primary"
         size="large"
@@ -215,6 +219,7 @@ class EventForm extends Component {
       >
         Download
       </Button>
+      </Container>
     </React.Fragment>
     );
   }
