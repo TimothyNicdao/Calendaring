@@ -101,8 +101,18 @@ class EventForm extends Component {
 
   formComplete = () =>{
 
+
+    for (let val of Object.keys(this.state) ){
+      console.log(val);
+      if (val == ''){
+        this.setState({error: key});
+        return false;
+      }
+    }
+
     Object.keys(this.state).forEach((key, index) => {
       if (this.state[key] == ''){
+        console.log('Print here!');
         console.log(key);
         this.setState({error: key});
         return false;
