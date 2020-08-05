@@ -51,7 +51,7 @@ class EventForm extends Component {
       priority:'',
       location:'',
       errorToggle: false,
-      error: 'None'
+      error: 'Noneee'
   }
 
   
@@ -101,25 +101,15 @@ class EventForm extends Component {
 
   formComplete = () =>{
 
-
     for (let val of Object.keys(this.state) ){
       console.log(val);
-      if (val == ''){
-        this.setState({error: key});
+      if (this.state[val] === ''){
+        console.log('Here in my garage');
+        this.setState({error: val});
         return false;
       }
     }
-
-    Object.keys(this.state).forEach((key, index) => {
-      if (this.state[key] == ''){
-        console.log('Print here!');
-        console.log(key);
-        this.setState({error: key});
-        return false;
-      }
-    })
-
-    return false;
+    return true;
   }
 
   formReset = () => {
