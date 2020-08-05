@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Form, Icon } from 'semantic-ui-react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Vevents from '../vevents';
@@ -11,6 +10,8 @@ import Alert from '@material-ui/lab/Alert';
 import Classification from './classification.jsx'
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
+import { Icon } from '@material-ui/core';
+import DateAndTimePickers from './datePicker';
 
 const classificatication = [
   {text: 'Public', value:'PUBLIC'},
@@ -55,11 +56,9 @@ class EventForm extends Component {
   }
 
   
-  handleChange = (e, {name, value}) => {
-    console.log('Called');
-    console.log(e.target);
-    console.log(e.target);
-    console.log(value);
+  handleChange = (event) => {
+    const {name, value} = event.target;
+    console.log('Handle Change Called');
     this.setState({ [name]: value })
   }
 
@@ -130,85 +129,76 @@ class EventForm extends Component {
     return (  
       <React.Fragment>
       <Container maxWidth="md">
-        <Classification
-          label='classification'
-          options={classificatication}
-          value={classification}
-          onChange={this.handleChange}
-        />
-        <TextField 
-          id="standard-basic" 
-          label='Latitude'  
+        <div>
+          <Classification
+            label='classification'
+            options={classificatication}
+            value={classification}
+            onChange={this.handleChange}
           />
-        <Form.Input 
-          inline 
-          label='Latitude' 
-          placeholder='Latitude' 
-          value={latitude}
-          name='latitude'
-          onChange={this.handleChange}
-        />
-        <Form.Input 
-          inline 
-          label='Longtitude' 
-          placeholder='Longtitude' 
-          value={longtitude}
-          name='longtitude'
-          onChange={this.handleChange}
-        />
-        <Form.Input 
-          inline 
-          label='Summary' 
-          value={summary}
-          onChange={this.handleChange}
-          name='summary'
-        />
-        <Form.Group inline>
-          <Form.Input 
-            readOnly
-            label='Start' 
-            placeholder='StartDate' 
-            width={2}
-            value={start}
+        </div>
+        <div>
+          <TextField
+            label='Latitude' 
+            placeholder='Latitude' 
+            value={latitude}
+            name='latitude'
+            onChange={this.handleChange}
           />
-          <Icon>
-            <DatePicker 
+        </div>
+        <div>
+          <TextField
+            label='Longtitude' 
+            placeholder='Longtitude' 
+            value={longtitude}
+            name='longtitude'
+            onChange={this.handleChange}
+          />
+        </div>
+
+        <div>
+          <TextField
+            inline 
+            label='Summary' 
+            value={summary}
+            onChange={this.handleChange}
+            name='summary'
+          />
+        </div>
+
+        <div>
+            <DateAndTimePickers 
             selected={this.state.date} 
             onChange={this.handleDateStartChange} 
-            name={start}
+            name='start'
           />
-          </Icon>
-        </Form.Group>
-        <Form.Group inline>
-          <Form.Input 
-            label='EndDate' 
-            placeholder='EndDate' 
-            width={2}
-            value={end}
-            readOnly
-          />
-          <Icon>
-            <DatePicker 
+        </div>
+
+      
+            <DateAndTimePickers
             selected={this.state.date} 
             onChange={this.handleDateEndChange} 
-            name={end}
+            name= 'end'
+            />
+  
+        <div>
+          <TextField
+            label='Priority' 
+            placeholder='Priority: 1-10' 
+            width={2}
+            onChange={this.handleChange}
+            name='priority'
           />
-          </Icon>
-        </Form.Group>
-        <Form.Input 
-          label='Priority' 
-          placeholder='Priority: 1-10' 
-          width={2}
-          onChange={this.handleChange}
-          name='priority'
-        />
-        <Form.Input 
-          label='Location' 
-          placeholder='Location' 
-          width={2}
-          onChange={this.handleChange}
-          name='location'
-        />
+        </div>
+        <div>
+          <TextField
+            label='Location' 
+            placeholder='Location' 
+            width={2}
+            onChange={this.handleChange}
+            name='location'
+          />
+        </div>
       <Button
         className = 'Center'
         variant="contained"

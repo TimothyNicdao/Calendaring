@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DateAndTimePickers() {
+export default function DateAndTimePickers(props) {
   const classes = useStyles();
 
   return (
     <form className={classes.container} noValidate>
       <TextField
         id="datetime-local"
-        label="Next appointment"
+        label= {props.name}
         type="datetime-local"
         defaultValue="2017-05-24T10:30"
         className={classes.textField}

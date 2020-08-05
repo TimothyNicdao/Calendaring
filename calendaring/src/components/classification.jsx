@@ -20,7 +20,7 @@ class Classification extends Component {
       return ( 
 
       <FormControl className={formStyle}>
-        <InputLabel id="demo-controlled-open-select-label">Classification</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">Classifications</InputLabel>
         <Select
           labelId="Classification" 
           id="Classification"
