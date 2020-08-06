@@ -158,7 +158,6 @@ class EventForm extends Component {
 
         <div>
           <TextField
-            inline 
             label='Summary' 
             value={summary}
             onChange={this.handleChange}
@@ -168,6 +167,7 @@ class EventForm extends Component {
 
         <div>
             <DateAndTimePickers 
+            id='Start'
             selected={this.state.date} 
             onChange={this.handleDateStartChange} 
             name='start'
@@ -176,6 +176,7 @@ class EventForm extends Component {
 
       
             <DateAndTimePickers
+            id='End'
             selected={this.state.date} 
             onChange={this.handleDateEndChange} 
             name= 'end'
