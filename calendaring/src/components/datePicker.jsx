@@ -8,8 +8,6 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
     width: 200,
   },
 }));
@@ -18,17 +16,17 @@ export default function DateAndTimePickers(props) {
   const classes = useStyles();
 
   return (
-    <form className={classes.container} noValidate>
-      <TextField
-        id="datetime-local"
-        label= {props.name}
-        type="datetime-local"
-        defaultValue="2017-05-24T10:30"
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-    </form>
+      <form className={classes.container} noValidate>
+        <TextField
+          id="datetime-local"
+          label= {props.name}
+          type="datetime-local"
+          defaultValue="2017-05-24T10:30"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+      </form>
   );
 }

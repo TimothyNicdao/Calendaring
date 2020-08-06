@@ -12,13 +12,10 @@ import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import { Icon } from '@material-ui/core';
 import DateAndTimePickers from './datePicker';
+import TimezonePicker from 'react-timezone-picker';
 
-const classificatication = [
-  {text: 'Public', value:'PUBLIC'},
-  {text: 'Private', value:'PRIVATE'}
-]
 
-const classificatication2 = [
+const classificaticationOptions = [
   {text: 'Public', value:'PUBLIC'},
   {text: 'Private', value:'PRIVATE'}
 ]
@@ -132,9 +129,9 @@ class EventForm extends Component {
         <div>
           <Classification
             label='classification'
-            options={classificatication}
             value={classification}
             onChange={this.handleChange}
+            options={classificaticationOptions}
           />
         </div>
         <div>
@@ -164,7 +161,11 @@ class EventForm extends Component {
             name='summary'
           />
         </div>
-
+        {/* <div>
+          <TimezonePicker
+          name='timezone'
+          onChange={() => props.onChange(e)}/>
+        </div> */}
         <div>
             <DateAndTimePickers 
             id='Start'

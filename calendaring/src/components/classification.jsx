@@ -1,44 +1,40 @@
-import React, { Component } from 'react';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import MenuItem from '@material-ui/core/MenuItem';
 
-const formStyle = {
-    minWidth: 1,
-    margin: 200,
-  };
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
+export default function Classification(props) {
+  const classes = useStyles();
 
-class Classification extends Component {
-
-    render() {
-    
-      let options = this.props.options;
-
-      return ( 
-
-      <FormControl className={formStyle}>
-        <InputLabel id="demo-controlled-open-select-label">Classifications</InputLabel>
+  return (
+    <div>
+      <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="age-native-simple">Classification</InputLabel>
         <Select
-          labelId="Classification" 
-          id="Classification"
+          id='classification-select'
+          native
+          value={props.value}
           name='classification'
-          autoWidth={true}
-          label="classification"
-          defaultValue='Public'
-          value={this.props.value}
-          fullWidth={true}
-          onChange={(e) => this.props.onChange(e, {name: e.target.name, value: e.target.value})}
-          >
-            {options.map((item) =>(
-                <MenuItem key={item.value}  value={item.value} > {item.value}</MenuItem>      
-            ))}
+          onChange={(e) => props.onChange(e)}
+        >
+            {props.options.map((item) =>(
+                <option key={item.value}  value={item.value} > {item.value}</option>      
+            ))}        
         </Select>
       </FormControl>
-      );
-    }
+    </div>
+  );
 }
- 
-export default Classification;
