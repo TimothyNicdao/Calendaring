@@ -50,15 +50,21 @@ class EventForm extends Component {
       end: new Date(),  
       priority:'',
       location:'',
+      timezone:'',
       errorToggle: false,
       error: 'Noneee'
   }
 
   
   handleChange = (event) => {
+    // console.log(event)
     const {name, value} = event.target;
     console.log('Handle Change Called');
     this.setState({ [name]: value })
+  }
+
+  handleTimezoneChange = (userTimezone) => {
+    this.setState({ timezone: userTimezone})
   }
 
   handleDateStartChange = (date) => {
@@ -82,11 +88,11 @@ class EventForm extends Component {
 
     if (this.formComplete() === true){
       console.log('12');
-      let {classification, latitude, longtitude, location, priority, summary, start, end} = this.state; 
+      let {classification, latitude, longtitude, location, priority, summary, start, end, timezone} = this.state; 
       start = this.buildDate(start);
       end = this.buildDate(end);
       let icsEvent = [new Vevents(classification, latitude, longtitude, location, priority, summary, start, end)];
-      let icsCalendar = new Ics(icsEvent);
+      let icsCalendar = new Ics(icsEvent,timezone);
       let calendar = icsCalendar.build();
       fileDownload(calendar, 'Calendar.ics');
     }
@@ -173,7 +179,7 @@ class EventForm extends Component {
           absolute      = {false}
           defaultValue  = "Europe/Moscow"
           placeholder   = "Select timezone..."
-          onChange      = {this.handleChange}
+          onChange      = {this.handleTimezoneChange}
         />
         </div>
         <div>
