@@ -12,7 +12,9 @@ import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import { Icon } from '@material-ui/core';
 import DateAndTimePickers from './datePicker';
-import TimezonePicker from 'react-timezone-picker';
+import Map from './map'
+import TimezonePicker from 'react-bootstrap-timezone-picker';
+import 'react-bootstrap-timezone-picker/dist/react-bootstrap-timezone-picker.min.css';
 
 
 const classificaticationOptions = [
@@ -134,6 +136,11 @@ class EventForm extends Component {
             options={classificaticationOptions}
           />
         </div>
+          {/* <Map
+            center={{lat: 18.5204, lng: 73.8567}}
+            height='300px'
+            zoom={15}
+          /> */}
         <div>
           <TextField
             label='Latitude' 
@@ -161,11 +168,14 @@ class EventForm extends Component {
             name='summary'
           />
         </div>
-        {/* <div>
-          <TimezonePicker
-          name='timezone'
-          onChange={() => props.onChange(e)}/>
-        </div> */}
+        <div>
+        <TimezonePicker
+          absolute      = {false}
+          defaultValue  = "Europe/Moscow"
+          placeholder   = "Select timezone..."
+          onChange      = {this.handleChange}
+        />
+        </div>
         <div>
             <DateAndTimePickers 
             id='Start'
